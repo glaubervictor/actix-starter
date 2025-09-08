@@ -31,6 +31,10 @@ async fn echo4(req_body: String) -> impl Responder {
     HttpResponse::Ok().body(req_body)
 }
 
+#[post("/echo10")]
+async fn echo1(req_body: String) -> impl Responder {
+    HttpResponse::Ok().body(req_body)
+}
 async fn manual_hello() -> impl Responder {
     HttpResponse::Ok().body("Hey there!")
 }
@@ -45,6 +49,10 @@ async fn main() -> std::io::Result<()> {
             .service(healthz)
             .service(hello)
             .service(echo)
+            .service(echo2)
+            .service(echo3)
+            .service(echo4)
+            .service(echo1)
             .route("/hey", web::get().to(manual_hello))
     })
     .bind(("0.0.0.0", port))?
