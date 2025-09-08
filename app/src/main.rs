@@ -32,7 +32,7 @@ async fn echo4(req_body: String) -> impl Responder {
 }
 
 #[post("/echo10")]
-async fn echo1(req_body: String) -> impl Responder {
+async fn echo10(req_body: String) -> impl Responder {
     HttpResponse::Ok().body(req_body)
 }
 async fn manual_hello() -> impl Responder {
@@ -52,7 +52,7 @@ async fn main() -> std::io::Result<()> {
             .service(echo2)
             .service(echo3)
             .service(echo4)
-            .service(echo1)
+            .service(echo10)
             .route("/hey", web::get().to(manual_hello))
     })
     .bind(("0.0.0.0", port))?
