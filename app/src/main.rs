@@ -21,6 +21,10 @@ async fn echo2(req_body: String) -> impl Responder {
     HttpResponse::Ok().body(req_body)
 }
 
+#[post("/echo3")]
+async fn echo3(req_body: String) -> impl Responder {
+    HttpResponse::Ok().body(req_body)
+}
 
 async fn manual_hello() -> impl Responder {
     HttpResponse::Ok().body("Hey there!")
